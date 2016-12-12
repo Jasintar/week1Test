@@ -9,7 +9,7 @@ public class Main {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!Thread.interrupted()) {
+                while (!Thread.interrupted() && (counter.getCount() < 100)) {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {

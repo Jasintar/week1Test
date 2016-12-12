@@ -20,7 +20,7 @@ public class CounterThread extends Thread implements Runnable {
      */
     @Override
     public void run() {
-        while (!this.isInterrupted()) {
+        while (!Thread.interrupted() && (counter.getCount() < 100)) {
             synchronized(counter) {
                 try {
                     counter.wait();
