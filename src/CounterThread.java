@@ -21,6 +21,7 @@ public class CounterThread extends Thread implements Runnable {
     @Override
     public void run() {
         while (!Thread.interrupted() && (counter.getCount() < 100)) {
+            counter.generateRandomNumber();
             synchronized(counter) {
                 try {
                     counter.wait();
@@ -28,7 +29,6 @@ public class CounterThread extends Thread implements Runnable {
                     e.printStackTrace();
                 }
             }
-            counter.generateRandomNumber();
             if (counter.getTime() % timeInterval == 0) {
                 System.out.println(counter.getCount() + " numbers generated");
             }
